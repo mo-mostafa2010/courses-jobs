@@ -1,9 +1,24 @@
 var express = require('express');
 var router = express.Router();
+const courses = require('./courses');
+const users = require('./users');
+
+router.use('/users', users);
+router.use('/courses', courses);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.status(200).send({
+    success: 'true',
+    message: 'todos retrieved successfully'  })
+});
+
+/* GET home page. */
+router.post('/', function(req, res, next) {
+  res.status(200).send({
+    success: 'true',
+    message: 'todos retrieved successfully',
+   body: req.body  })
 });
 
 module.exports = router;

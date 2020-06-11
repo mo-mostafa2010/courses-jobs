@@ -8,11 +8,11 @@ const mongoose = require('mongoose');
 var url = "mongodb://localhost:27017/learning";
 
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
-const courseRoute = require('./api/routes/courses');
+var coursesRouter = require('./routes/courses');
 
-mongoose.connect(url);
+mongoose.connect(url, { useNewUrlParser: true,  useUnifiedTopology: true});
 const connection = mongoose.connection;
 
 connection.once("open", function() {
@@ -34,7 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
+// app.use('/courses', coursesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
