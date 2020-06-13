@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const course = require('../api/models/course');
+const course = require('../models/course');
 
 router.post('/', (req, res, next)=>{
     const newCourse = new course({
@@ -25,8 +25,14 @@ router.post('/', (req, res, next)=>{
     })
 })
 
-router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+router.get('/:id', function(req, res, next) {
+    course.findById(req.params.id, (err, res2)=>{
+        if(err){
+            res.send(err);
+        }
+        else
+        res.send(res2);
+    })
 });
   
 

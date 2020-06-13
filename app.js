@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const mongoose = require('mongoose');
-var url = "mongodb://localhost:27017/learning";
+var url = "mongodb://localhost:27017/courses";
 
 
 var indexRouter = require('./routes');
