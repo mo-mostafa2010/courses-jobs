@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const course = require('../models/course');
 
 router.post('/', (req, res, next)=>{
+    res.header("Access-Control-Allow-Origin", "*"); 
     const newCourse = new course({
         _id: mongoose.Types.ObjectId(),
         title: req.body.title,
@@ -26,6 +27,7 @@ router.post('/', (req, res, next)=>{
 })
 
 router.get('/:id', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); 
     course.findById(req.params.id, (err, res2)=>{
         if(err){
             res.send(err);
@@ -37,6 +39,7 @@ router.get('/:id', function(req, res, next) {
 
 
 router.get('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); 
     course.find({}, (err, res2)=>{
         if(err){
             res.send(err);

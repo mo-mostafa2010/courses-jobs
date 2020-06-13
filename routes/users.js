@@ -6,6 +6,7 @@ const user = require('../models/user')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); 
   user.find({}, (err, res2)=>{
     res.send(res2);
   })
@@ -33,6 +34,7 @@ router.post('/', (req, res, next)=>{
 })
 
 router.post('/login', (req, res, next)=>{
+  res.header("Access-Control-Allow-Origin", "*"); 
   const currentUser = {
     username: req.body.username,
     password: req.body.password
