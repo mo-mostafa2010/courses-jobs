@@ -34,6 +34,17 @@ router.get('/:id', function(req, res, next) {
         res.send(res2);
     })
 });
+
+
+router.get('/', function(req, res, next) {
+    course.find({}, (err, res2)=>{
+        if(err){
+            res.send(err);
+        }
+        else
+        res.send(res2);
+    })
+});
   
 
  
