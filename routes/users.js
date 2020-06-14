@@ -16,7 +16,8 @@ router.post('/', (req, res, next)=>{
   const newUser = new user({
       _id: mongoose.Types.ObjectId(),
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
+      userSkills: req.body.userSkills
   });
   console.log("rec", req);
   newUser.save().then(res=>{
@@ -37,7 +38,8 @@ router.post('/login', (req, res, next)=>{
   res.header("Access-Control-Allow-Origin", "*"); 
   const currentUser = {
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    userSkills: req.body.userSkills
   }
   user.find({username: currentUser.username}, (err, res2)=>{
     if(res2.length > 0){

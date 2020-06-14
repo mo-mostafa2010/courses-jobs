@@ -11,7 +11,8 @@ router.post('/', (req, res, next)=>{
         courseName: req.body.courseName,
         courseDesc: req.body.courseDesc,
         courseURL: req.body.courseURL,
-        instructorName: req.body.instructorName
+        instructorName: req.body.instructorName,
+        courseSkils: req.body.courseSkils
     });
     newCourse.save().then(res=>{
         console.log('saved')
