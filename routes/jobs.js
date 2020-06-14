@@ -2,25 +2,25 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const course = require('../models/course');
+const job = require('../models/job');
 
 router.post('/', (req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*"); 
-    const newCourse = new course({
+    const newjob = new job({
         _id: mongoose.Types.ObjectId(),
-        courseName: req.body.courseName,
-        courseDesc: req.body.courseDesc,
-        courseURL: req.body.courseURL,
-        instructorName: req.body.instructorName
+        jobTitle: req.body.jobTitle,
+        jobProvider: req.body.jobProvider,
+        jobSkills: req.body.jobSkills,
+        jobURL: req.body.jobURL
     });
-    newCourse.save().then(res=>{
+    newjob.save().then(res=>{
         console.log('saved')
     }).catch(err=>{
         console.log("error", err);
     })
     res.status(201).json({
         msg: 'succrss', 
-        data: newCourse
+        data: newjob
     })
     res.status(404).json({
         msg: 'a7la mesa'
@@ -29,7 +29,7 @@ router.post('/', (req, res, next)=>{
 
 router.get('/:id', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); 
-    course.findById(req.params.id, (err, res2)=>{
+    job.findById(req.params.id, (err, res2)=>{
         if(err){
             res.send(err);
         }
@@ -41,7 +41,7 @@ router.get('/:id', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); 
-    course.find({}, (err, res2)=>{
+    job.find({}, (err, res2)=>{
         if(err){
             res.send(err);
         }
@@ -54,7 +54,7 @@ router.get('/', function(req, res, next) {
 router.get('/search/:key', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     let key = req.params.key; 
-    course.find({courseName: { $regex: '.*' + key + '.*' } }, (err, res2)=>{
+    job.find({jobTitle: { $regex: '.*' + key + '.*' } }, (err, res2)=>{
         if(err){
             res.send(err);
         }
