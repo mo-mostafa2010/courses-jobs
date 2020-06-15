@@ -6,6 +6,8 @@ const course = mongoose.Schema({
     courseDesc: String,
     courseURL: String,
     instructorName: String,
-    courseSkils: Array
+    courseSkils: Array,
+    courseImg: String
 });
+
 module.exports = mongoose.model("course", course);

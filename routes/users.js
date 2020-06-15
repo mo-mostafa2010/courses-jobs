@@ -39,7 +39,6 @@ router.post('/login', (req, res, next)=>{
   const currentUser = {
     username: req.body.username,
     password: req.body.password,
-    userSkills: req.body.userSkills
   }
   user.find({username: currentUser.username}, (err, res2)=>{
     if(res2.length > 0){
