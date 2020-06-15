@@ -12,7 +12,10 @@ router.post('/', (req, res, next)=>{
         courseDesc: req.body.courseDesc,
         courseURL: req.body.courseURL,
         instructorName: req.body.instructorName,
-        courseSkils: req.body.courseSkils
+        courseSkils: req.body.courseSkils,
+        CourseDesc: req.body.CourseDesc,
+        CourseLvl: req.body.CourseLvl,
+        CourseDuration: req.body.ourseDuration
     });
     newCourse.save().then(res=>{
         console.log('saved')
