@@ -5,6 +5,11 @@ const job = mongoose.Schema({
     jobTitle: String,
     jobProvider: String,
     jobSkills: Array,
-    jobURL: String
+    jobURL: String,
+    jobLocation: String,
+    jobIndustry: String,
+    jobType: String 
+    
+
 });
 module.exports = mongoose.model("job", job);

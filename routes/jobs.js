@@ -11,7 +11,10 @@ router.post('/', (req, res, next) => {
         jobTitle: req.body.jobTitle,
         jobProvider: req.body.jobProvider,
         jobSkills: req.body.jobSkills,
-        jobURL: req.body.jobURL
+        jobURL: req.body.jobURL,
+        jobLocation: req.body.jobLocation,
+        jobIndustry: req.body.jobIndustry,
+        jobType: req.body.jobType
     });
     newjob.save().then(res => {
         console.log('saved')
