@@ -34,19 +34,20 @@ router.post('/', (req, res, next)=>{
   })
 })
 
-router.post('/login', (req, res, next)=>{
+router.get('/login/:username/:password', (req, res, next)=>{
   res.header("Access-Control-Allow-Origin", "*"); 
   const currentUser = {
-    username: req.body.username,
-    password: req.body.password,
-    userSkills: req.body.userSkills
+    username: req.params.username,
+    password: req.params.password,
   }
+  console.log('params', req.params);
+  
   user.find({username: currentUser.username}, (err, res2)=>{
     if(res2.length > 0){
       if(res2[0].password == currentUser.password){
         res.status(201).json({
           msg: 'tmam zay el fol', 
-          data: res2,
+          data: currentUser,
           err: false
       })  
       }

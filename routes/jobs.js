@@ -82,7 +82,7 @@ router.get('/userJobs/:id', function (req, res, next) {
                 console.log('jobs', jobs);
             })
         })
-        
+
     })
 });
 
